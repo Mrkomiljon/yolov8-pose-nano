@@ -78,6 +78,20 @@ You can run the pose estimation and skeleton visualization script using the comm
 - The output consists of the original input with an overlay of the detected skeleton and keypoints.
 
 1. Prepare the COCO dataset and structure it as follows:
+ ### Run the script to download and extract the COCO dataset:
+
+```bash
+    python download_coco.py
+```
+
+   By default, the dataset will be saved in the `../Dataset/COCOPose` directory.
+   ### Run the script to generate the image lists:
+
+```bash
+    python generate_image_list.py
+```
+
+   This will create `train2017.txt` and `val2017.txt` in the `Dataset/COCOPose/` directory.
 
     ```plaintext
     Dataset/
@@ -92,7 +106,7 @@ You can run the pose estimation and skeleton visualization script using the comm
     │   ├── val2017.txt
     ```
 
-2. Ensure you have the pre-trained model weights (if any) in the `./weights/` directory:
+3. Ensure you have the pre-trained model weights (if any) in the `./weights/` directory:
 
     ```plaintext
     ./weights/best.pt
@@ -145,6 +159,7 @@ python main.py --demo --input-size 640
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-## License
+### Reference
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+* https://github.com/ultralytics/yolov5
+* https://github.com/ultralytics/ultralytics
