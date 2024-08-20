@@ -170,3 +170,4 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 * https://github.com/ultralytics/yolov5
 * https://github.com/ultralytics/ultralytics
+* https://github.com/jahongir7174/YOLOv8-pose
