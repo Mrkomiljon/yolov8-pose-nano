@@ -88,14 +88,14 @@ You can run the pose estimation and skeleton visualization script using the comm
  ### Run the script to download and extract the COCO dataset:
 
 ```bash
-    python download_coco.py
+python download_coco.py
 ```
 
    By default, the dataset will be saved in the `../Dataset/COCOPose` directory.
    ### Run the script to generate the image lists:
 
 ```bash
-    python generate_image_list.py
+python generate_image_list.py
 ```
 
    This will create `train2017.txt` and `val2017.txt` in the `Dataset/COCOPose/` directory.
