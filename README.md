@@ -24,8 +24,8 @@ This project provides a script for performing pose estimation and visualizing sk
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/yourusername/pose-estimation.git
-    cd pose-estimation
+    git clone https://github.com/Mrkomiljon/yolov8-pose-nano.git
+    cd yolov8-pose-nano
     ```
 
 2. Install the required Python packages:
@@ -77,6 +77,70 @@ You can run the pose estimation and skeleton visualization script using the comm
 - For video or webcam input, the result is saved as a video in the `results/` directory.
 - The output consists of the original input with an overlay of the detected skeleton and keypoints.
 
+1. Prepare the COCO dataset and structure it as follows:
+
+    ```plaintext
+    Dataset/
+    ├── COCOPose/
+    │   ├── images/
+    │   │   ├── train2017/
+    │   │   ├── val2017/
+    │   ├── annotations/
+    │   │   ├── person_keypoints_train2017.json
+    │   │   ├── person_keypoints_val2017.json
+    │   ├── train2017.txt
+    │   ├── val2017.txt
+    ```
+
+2. Ensure you have the pre-trained model weights (if any) in the `./weights/` directory:
+
+    ```plaintext
+    ./weights/best.pt
+    ```
+
+## Training
+
+To start training, run the following command:
+
+```bash
+python main.py --train --batch-size 16 --epochs 1000 # desired number
+```
+Command Line Arguments
+--input-size: The size to which input images will be resized before processing. Default is 640.
+--batch-size: The batch size used for training. Default is 32.
+--local_rank: The rank of the current process in distributed training. Automatically set by PyTorch.
+--epochs: The number of epochs to train the model. Default is 1000.
+--train: Flag to start the training process.
+Distributed Training
+To train on multiple GPUs, use the following command:
+
+```bash
+python -m torch.distributed.launch --nproc_per_node=4 --use_env main.py --train --batch-size 16 --epochs 300
+```
+This command will utilize 4 GPUs for training.
+
+### Training Configuration
+- The training configuration is stored in the utils/args.yaml file. You can modify this file to adjust various settings, such as learning rates, optimizer parameters, and data augmentation techniques.
+
+## Checkpoints
+- Model checkpoints are saved in the weights/ directory during training.
+- The best-performing model is saved as weights/best.pt.
+- The most recent model is saved as weights/last.pt.
+- Monitoring Training
+- Training progress, including loss and evaluation metrics, is logged and can be monitored via the console output. A CSV log is also maintained at weights/step.csv, which records the performance metrics (BoxAP and PoseAP) for each epoch.
+
+### Evaluation
+After training, you can evaluate the model on the COCO validation set using:
+
+```bash
+python main.py --test
+```
+### Demo
+To visualize the model in action using your webcam, run:
+
+```bash
+python main.py --demo --input-size 640
+```
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
