@@ -1,6 +1,13 @@
 # yolov8-pose-nano
 # Pose Estimation and Skeleton Visualization
 
+https://github.com/user-attachments/assets/416f7b0a-c0d0-4727-8555-00c807697751
+
+https://github.com/user-attachments/assets/27665af4-db76-4712-80b8-b69c988d1caf
+
+https://github.com/user-attachments/assets/07c6775f-8272-4bf3-9ac3-6b078cb333be
+
+
 This project provides a script for performing pose estimation and visualizing skeletons on images, videos, or webcam feeds using a pre-trained deep learning model.
 
 ## Features
@@ -56,19 +63,19 @@ You can run the pose estimation and skeleton visualization script using the comm
 1. **Processing an Image**:
 
     ```bash
-    python infer.py --source ./data/sample_image.jpg --output-width 1280 --output-height 720
+    python inference.py --source ./data/sample_image.jpg --output-width 1280 --output-height 720
     ```
 
 2. **Processing a Video**:
 
     ```bash
-    python infer.py --source ./data/sample_video.mp4 --output-width 1920 --output-height 1080
+    python inference.py --source ./data/sample_video.mp4 --output-width 1920 --output-height 1080
     ```
 
 3. **Using Webcam**:
 
     ```bash
-    python infer.py --source 0 --output-width 1280 --output-height 720
+    python inference.py --source 0 --output-width 1280 --output-height 720
     ```
 
 ### Output
